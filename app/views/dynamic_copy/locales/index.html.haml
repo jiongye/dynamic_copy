@@ -1,0 +1,24 @@
+#locales
+  %h3
+    List of Locales
+
+  %table.table.table-striped.table-bordered
+    %thead
+      %tr
+        %th
+          Locale Code
+        %th
+          Locale Name
+        %th
+
+    - @locales.each do |locale|
+      %tr
+        %td
+          = link_to locale, edit_locale_path(:id => locale)
+        %td
+          = DynamicCopy.locale_names[locale]
+        %td
+          = link_to 'Delete', locale_path(:id => locale), :method => :delete, :confirm => "All translations for this locale will be deleted, Are you sure?"
+
+  %p
+    = link_to 'Create New Locale', new_locale_path

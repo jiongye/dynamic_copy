@@ -1,0 +1,23 @@
+#translation
+  %h3
+    List of Translations
+
+  #available_locales
+    - @locales.each do |locale|
+      %span
+        = link_to DynamicCopy.locale_names[locale], translations_path(:locale => locale)
+
+  %table.table.table-striped.table-bordered
+    %thead
+      %tr
+        %th
+          Key
+        %th
+          Value
+
+    - @keys.each do |key|
+      %tr
+        %td
+          = link_to key, edit_translation_path(:id => key, :locale => @locale)
+        %td
+          = raw DynamicCopy.locale_value(@locale, key)

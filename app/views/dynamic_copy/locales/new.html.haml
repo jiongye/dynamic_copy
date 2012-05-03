@@ -1,0 +1,9 @@
+#locales
+  %h2
+    Add a New Locale
+
+  = form_tag locales_path do
+    = render 'form', :locale_code => @locale_code, :locale_name => @locale_name
+
+    %p
+      = submit_tag "Submit"
