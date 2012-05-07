@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = DynamicCopy::VERSION
   s.authors     = ["Jiongye Li"]
   s.email       = ["jiongye@gmail.com"]
-  s.homepage    = "TODO"
+  s.homepage    = "https://github.com/jiongye/dynamic_copy"
   s.summary     = "An I18n backend with key-value store using Redis"
   s.description = "Use Redis to store all locale, and provide an admin to manage locale and translations"
 

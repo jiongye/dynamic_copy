@@ -9,8 +9,24 @@ module DynamicCopy
     "production" => 2
   }
 
+  ## CONFIGURATION OPTIONS
+  # redis server configuration options
+  mattr_reader :redis_options
+  @@redis_options = { :db => DATABASES[Rails.env.to_s] }
+
+  # merge with the default :db option
+  def self.redis_options=(options = {})
+    @@redis_options = { :db => DATABASES[Rails.env.to_s] }.merge(options)
+  end
+
+  # Default way to setup DynamicCopy
+  # currently only redis server connection options are supported
+  def self.setup
+    yield self
+  end
+
   def self.database
-    @database ||= Redis.new(:db => DATABASES[Rails.env.to_s])
+    @database ||= Redis.new(redis_options)
   end
 
   def self.convert_to_hash(key, value)

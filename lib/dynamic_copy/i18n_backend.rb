@@ -1,5 +1,5 @@
 module DynamicCopy
-  
+
   class I18nBackend < I18n::Backend::KeyValue
 
     def initialize
@@ -12,7 +12,7 @@ module DynamicCopy
     def translate(locale, key, options = {})
       new_key = normalize_flat_keys(locale, key, options[:scope], options[:separator])
       content = super
-      store_translations(locale, DynamicCopy.convert_to_hash(new_key, content), :escape => false) unless DynamicCopy.database["#{locale}.#{new_key}"]
+      store_translations(locale, DynamicCopy.convert_to_hash(new_key, content), :escape => false) unless store["#{locale}.#{new_key}"]
       content.respond_to?(:html_safe) ? content.html_safe : content
     end
 
@@ -46,7 +46,7 @@ module DynamicCopy
 
     def lookup(locale, key, scope = [], options = {})
       key   = normalize_flat_keys(locale, key, scope, options[:separator])
-      value = DynamicCopy.database["#{locale}.#{key}"]
+      value = store["#{locale}.#{key}"]
       value = ActiveSupport::JSON.decode(value) rescue value
       value.is_a?(Hash) ? value.deep_symbolize_keys : value
     end
