@@ -2,7 +2,8 @@ module DynamicCopy
 
   class I18nBackend < I18n::Backend::KeyValue
 
-    def initialize
+    def initialize(options = {})
+      DynamicCopy.redis_options = options
       super(DynamicCopy.database)
       @store['available_locales'] ||= ActiveSupport::JSON.encode(available_locales)
     end

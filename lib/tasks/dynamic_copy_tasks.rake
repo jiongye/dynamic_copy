@@ -24,4 +24,19 @@ namespace :dynamic_copy do
     DynamicCopy.database.bgsave
   end
 
+  desc 'Generate config file'
+  task :generate_config_file do
+    username = (0...8).map{ ('a'..'z').to_a[rand(26)] }.join
+    password = (0...8).map{ ('a'..'z').to_a[rand(26)] }.join
+    filepath = Rails.root.join('config', 'initializers', 'dynamic_copy.rb')
+    File.open(filepath, 'w') do |f|
+      f << <<-CONFIG
+DynamicCopy.setup do |config|
+  config.username = '#{username}'
+  config.password = '#{password}'
+end
+CONFIG
+    end
+  end
+
 end

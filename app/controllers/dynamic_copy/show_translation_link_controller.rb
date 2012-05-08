@@ -1,5 +1,6 @@
 module DynamicCopy
   class ShowTranslationLinkController < ActionController::Base
+    http_basic_authenticate_with :name => DynamicCopy.username, :password => DynamicCopy.password
 
     def edit
       session[:show_translation_link] = params[:setting] == 'yes' ? true : false

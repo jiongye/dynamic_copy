@@ -2,6 +2,7 @@ module DynamicCopy
 
   # TODO: create a locale model to abstract the locale related stuff
   class LocalesController < ApplicationController
+    http_basic_authenticate_with :name => DynamicCopy.username, :password => DynamicCopy.password
 
     def index
       @locales = DynamicCopy.locales

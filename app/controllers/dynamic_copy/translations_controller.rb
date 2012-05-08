@@ -1,6 +1,8 @@
 module DynamicCopy
 
   class TranslationsController < ApplicationController
+    http_basic_authenticate_with :name => DynamicCopy.username, :password => DynamicCopy.password
+
     before_filter :get_locale
     before_filter :available_locales, :only => [:index, :edit]
 

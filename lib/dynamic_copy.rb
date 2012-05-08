@@ -10,6 +10,10 @@ module DynamicCopy
   }
 
   ## CONFIGURATION OPTIONS
+  # http_basic_auth config
+  mattr_accessor :username
+  mattr_accessor :password
+
   # redis server configuration options
   mattr_reader :redis_options
   @@redis_options = { :db => DATABASES[Rails.env.to_s] }
