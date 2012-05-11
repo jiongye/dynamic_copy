@@ -7,8 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% if flash[:notice] %>
+    <p>
+      <%= flash[:notice] %>
+    </p>
+  <% end %>
 
-<%= yield %>
+  <div id='edit_translation'></div>
+
+  <%= yield %>
 
 </body>
 </html>

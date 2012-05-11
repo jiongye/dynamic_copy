@@ -8,13 +8,12 @@ module DynamicCopy
       @store['available_locales'] ||= ActiveSupport::JSON.encode(available_locales)
     end
 
-    # mark the content as html_safe if it respond_to :html_safe
-    # also store the missing translate to the key-value store
+    # find the translation and also store the missing translate to the key-value store
     def translate(locale, key, options = {})
       new_key = normalize_flat_keys(locale, key, options[:scope], options[:separator])
       content = super
       store_translations(locale, DynamicCopy.convert_to_hash(new_key, content), :escape => false) unless store["#{locale}.#{new_key}"]
-      content.respond_to?(:html_safe) ? content.html_safe : content
+      content
     end
 
     # override the method that don't encode the value if it is a String

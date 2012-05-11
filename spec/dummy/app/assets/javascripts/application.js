@@ -12,4 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require dynamic_copy
 //= require_tree .
