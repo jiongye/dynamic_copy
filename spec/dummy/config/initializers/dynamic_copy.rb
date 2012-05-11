@@ -1,4 +1,4 @@
 DynamicCopy.setup do |config|
-  config.username = 'qmmpdiar'
-  config.password = 'mqigkirp'
+  config.username = 'admin'
+  config.password = 'password'
 end

@@ -102,6 +102,14 @@ describe DynamicCopy do
     it "should also remove all translations with that locale" do
       DynamicCopy.database.keys('cn.*').should be_empty
     end
+
+    it "should also remove the locale from the available_locales key" do
+      ActiveSupport::JSON.decode(DynamicCopy.database["available_locales"]).should_not include('cn')
+    end
+
+    it "should also remove the locale from the locale from the locale_names key" do
+      ActiveSupport::JSON.decode(DynamicCopy.database["locale_names"]).keys.should_not include('cn')
+    end
   end
 
 end

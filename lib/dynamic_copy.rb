@@ -101,9 +101,29 @@ module DynamicCopy
 
   def self.delete_locale(locale)
     locale = locale.strip
+    remove_from_available_locales(locale)
+    remove_from_locale_names(locale)
+    database.del *database.keys("#{locale}.*") unless database.keys("#{locale}.*").blank?
+  end
+
+  def self.remove_from_available_locales(locale)
     locales.delete(locale)
+    if locales.blank?
+      @locales = nil
+      database.del('available_locales')
+    else
+      database['available_locales'] = ActiveSupport::JSON.encode(locales)
+    end
+  end
+
+  def self.remove_from_locale_names(locale)
     locale_names.delete(locale)
-    database.del *database.keys("#{locale}.*")
+    if locale_names.blank?
+      @locale_names = nil
+      database.del('locale_names')
+    else
+      database['locale_names'] = ActiveSupport::JSON.encode(locale_names)
+    end
   end
 
 end

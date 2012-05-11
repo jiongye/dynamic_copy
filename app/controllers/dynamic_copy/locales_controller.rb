@@ -43,6 +43,7 @@ module DynamicCopy
     def destroy
       locale = params[:id]
       DynamicCopy.delete_locale(locale)
+      DynamicCopy.database.save
       redirect_to locales_path, :notice => "All translations for locale #{locale} has been deleted."
     end
 
