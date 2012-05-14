@@ -20,4 +20,4 @@
         %td
           = link_to key, edit_translation_path(:id => key, :locale => @locale)
         %td
-          = raw DynamicCopy.locale_value(@locale, key)
+          = DynamicCopy.locale_value(@locale, key)

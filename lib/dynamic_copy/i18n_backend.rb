@@ -9,14 +9,16 @@ module DynamicCopy
     end
 
     # find the translation and also store the missing translate to the key-value store
+    # also mark the return value as html_safe if the return value is a string
     def translate(locale, key, options = {})
       new_key = normalize_flat_keys(locale, key, options[:scope], options[:separator])
       content = super
       store_translations(locale, DynamicCopy.convert_to_hash(new_key, content), :escape => false) unless store["#{locale}.#{new_key}"]
-      content
+      content.respond_to?(:html_safe) ? content.html_safe : content
     end
 
     # override the method that don't encode the value if it is a String
+    # also remove any open and close <script></script> tags
     def store_translations(locale, data, options = {})
       escape = options.fetch(:escape, true)
       flatten_translations(locale, data, escape, @subtrees).each do |key, value|
@@ -34,7 +36,7 @@ module DynamicCopy
 
         unless value.is_a?(Symbol)
           if value.is_a?(String)
-            @store[key] = value.strip unless value.blank? # don't store the locale if it is empty
+            @store[key] = value.strip.gsub(/\<script.*?\>|\<\/script\>/, '') unless value.blank? # don't store the locale if it is empty
           else
             @store[key] = ActiveSupport::JSON.encode(value)
           end
