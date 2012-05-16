@@ -12,6 +12,7 @@ module DynamicCopy
 
     def edit
       @key = params[:id]
+      render :partial => 'edit'
     end
 
     def update

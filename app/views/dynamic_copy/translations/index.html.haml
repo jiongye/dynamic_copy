@@ -18,6 +18,6 @@
     - @keys.each do |key|
       %tr
         %td
-          = link_to key, edit_translation_path(:id => key, :locale => @locale)
+          = link_to key, edit_translation_path(:id => key, :locale => @locale), :class => 'edit_translation'
         %td
           = DynamicCopy.locale_value(@locale, key)

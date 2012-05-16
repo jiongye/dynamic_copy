@@ -1,6 +1,6 @@
 jQuery(function() {
 
-  $( "#edit_translation" ).dialog({
+  $("#edit_translation").dialog({
     autoOpen: false,
     height: 500,
     width: 800,
@@ -13,8 +13,15 @@ jQuery(function() {
   });
 
   $('.edit_translation').click(function(){
-    $( "#edit_translation" ).dialog( "open" );
-    return false;
+    if($("#edit_translation")[0] != undefined){
+      url = $(this).attr('href');
+      $.get(url, function(data){
+        $('#edit_translation').html(data);
+      }, 'html');
+
+      $("#edit_translation").dialog( "open" );
+      return false;
+    }
   })
 
 })
