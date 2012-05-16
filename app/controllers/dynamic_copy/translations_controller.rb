@@ -11,6 +11,7 @@ module DynamicCopy
     end
 
     def edit
+      session[:return_to] = request.referer
       @key = params[:id]
       render :partial => 'edit'
     end
@@ -23,8 +24,8 @@ module DynamicCopy
       end
 
       DynamicCopy.database.bgsave
-
-      redirect_to translations_path(:locale => @locale), :notice => "Translation for key '#{@key}' has been updated"
+      flash[:notice] = "Translation for key '#{@key}' has been updated"
+      redirect_to session[:return_to] || translations_path(:locale => @locale)
     end
 
     protected
