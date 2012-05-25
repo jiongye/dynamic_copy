@@ -2,6 +2,7 @@ jQuery(function() {
 
   $("#edit_translation").dialog({
     autoOpen: false,
+    title: 'Edit Translation',
     height: 500,
     width: 800,
     modal: true,

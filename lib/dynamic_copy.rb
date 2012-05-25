@@ -24,7 +24,7 @@ module DynamicCopy
   end
 
   # Default way to setup DynamicCopy
-  # currently only redis server connection options are supported
+  # currently only http_basic_auth username and password is supported
   def self.setup
     yield self
   end

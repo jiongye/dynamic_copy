@@ -5,7 +5,6 @@ module DynamicCopy
     def initialize(options = {})
       DynamicCopy.redis_options = options
       super(DynamicCopy.database)
-      @store['available_locales'] ||= ActiveSupport::JSON.encode(available_locales)
     end
 
     # find the translation and also store the missing translate to the key-value store
