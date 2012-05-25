@@ -5,12 +5,7 @@ jQuery(function() {
     title: 'Edit Translation',
     height: 500,
     width: 800,
-    modal: true,
-    open: function(event, ui) {
-      $('.ui-widget-overlay').bind('click', function() {
-        $("#edit_translation").dialog('close');
-      });
-    }
+    modal: true
   });
 
   $('.edit_translation').click(function(){

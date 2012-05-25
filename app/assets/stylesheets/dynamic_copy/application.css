@@ -2,3 +2,52 @@
  *= require_self
  *= require_tree .
 */
+
+html, body, ul, li {
+    border: 0 none;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+.dynamic_copy .notice {
+  margin: 10px 0px;
+  color: green;
+}
+
+.dynamic_copy a {
+  color: blue;
+  text-decoration: none;
+}
+
+.dynamic_copy a:hover {
+  text-decoration: underline;
+}
+
+.dynamic_copy a {
+  text-decoration: none;
+}
+
+.dynamic_copy .nav {
+  background-color: #2C2C2C;
+  padding: 20px;
+}
+
+.dynamic_copy .nav a {
+  color: #fff;
+}
+
+.dynamic_copy .nav ul {
+  list-style-type: none;
+}
+
+.dynamic_copy .nav ul li {
+  border-left: 1px solid #fff;
+  padding: 10px 20px 10px 20px;
+  display: inline;
+}
+
+.dynamic_copy .nav ul li:last-child {
+  border-right: 1px solid #fff;
+}

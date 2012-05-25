@@ -1,17 +1,20 @@
 !!!
 %html
   %head
-    %title
-      DynamicCopy
+    %title DynamicCopy
     = stylesheet_link_tag    "dynamic_copy/application", :media => "all"
     = javascript_include_tag "dynamic_copy/application"
     = csrf_meta_tags
 
-  %body
-    -if flash[:notice]
-      %p= flash[:notice]
+  %body.dynamic_copy
+    .nav
+      = render 'layouts/dynamic_copy/navigation'
 
-    #edit_translation{}
+    -if flash[:notice]
+      .notice
+        = flash[:notice]
+
+    #edit_translation
 
     = yield
 
