@@ -43,11 +43,17 @@ html, body, ul, li {
 }
 
 .dynamic_copy .nav ul li {
-  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
   padding: 10px 20px 10px 20px;
   display: inline;
 }
 
-.dynamic_copy .nav ul li:last-child {
-  border-right: 1px solid #fff;
+.dynamic_copy .nav ul li:first-child {
+  border-left: 1px solid #fff;
+  margin-left: 50px;
 }
+
+.dynamic_copy #main_content {
+  margin-left: 70px;
+}
+
