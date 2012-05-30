@@ -8,14 +8,16 @@
 
   %body.dynamic_copy
     .nav
-      = render 'layouts/dynamic_copy/navigation'
-
-    -if flash[:notice]
-      .notice
-        = flash[:notice]
+      .wrapper
+        = render 'layouts/dynamic_copy/navigation'
 
     #edit_translation
 
-    #main_content
+    #main_content.wrapper
+
+      -if flash[:notice]
+        .notice
+          = flash[:notice]
+
       = yield
 

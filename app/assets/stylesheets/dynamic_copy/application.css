@@ -31,7 +31,7 @@ html, body, ul, li {
 
 .dynamic_copy .nav {
   background-color: #2C2C2C;
-  padding: 20px;
+  padding: 20px 0px;
 }
 
 .dynamic_copy .nav a {
@@ -50,10 +50,34 @@ html, body, ul, li {
 
 .dynamic_copy .nav ul li:first-child {
   border-left: 1px solid #fff;
-  margin-left: 50px;
 }
 
-.dynamic_copy #main_content {
-  margin-left: 70px;
+.dynamic_copy .wrapper {
+  width: 940px;
+  margin: 0 auto 0 auto;
 }
 
+.dynamic_copy .datatable {
+  border: 1px solid #000;
+  border-collapse: collapse;
+}
+
+.dynamic_copy .datatable td, .dynamic_copy .datatable th {
+  border: 1px solid #000;
+  padding: 5px 10px;
+}
+
+.dynamic_copy .datatable th {
+  background-color: #bcbcbc;
+  font-weight: bold;
+}
+
+.dynamic_copy .datatable tr:nth-child(even) {
+  background-color: #dfe7f2;
+  color: #000000;
+}
+
+.dynamic_copy .datatable tr:hover {
+  background-color: #99FFFF;
+  color: #000;
+}
