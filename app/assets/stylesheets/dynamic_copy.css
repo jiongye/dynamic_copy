@@ -1,3 +1,16 @@
 /*
  *= require dynamic_copy/jquery-ui-1.8.20.custom
+ *= require dynamic_copy/translations
 */
+
+.dynamic_copy .edit_translation {
+  margin-left: 5px;
+  font-size: 13px;
+  color: green;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.dynamic_copy .edit_translation:hover {
+  text-decoration: underline;
+}

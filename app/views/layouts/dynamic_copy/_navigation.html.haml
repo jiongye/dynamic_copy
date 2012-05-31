@@ -1,12 +1,12 @@
 %ul
   %li
-    = link_to t('dynamic_copy.back_to_main_app', :default => "Back to Main App"), main_app.root_path
+    = link_to "Back to Main App", main_app.root_path
   %li
-    = link_to t('dynamic_copy.translations', :default => "Translations List"), root_path
+    = link_to "Translations List", root_path
   %li
-    = link_to t('dynamic_copy.locales', :default => "Manage Locales"), locales_path
+    = link_to "Manage Locales", locales_path
   %li
     - if session[:show_translation_link]
-      = link_to t('dynamic_copy.hide_translation_links', :default => "Hide Translation Links"), show_translation_link_path(:setting => 'no')
+      = link_to "Hide Translation Links", show_translation_link_path(:setting => 'no')
     -else
-      = link_to t('dynamic_copy.show_translation_links', :default => "Show Translation Links"), show_translation_link_path(:setting => 'yes')
+      = link_to "Show Translation Links", show_translation_link_path(:setting => 'yes')
