@@ -5,5 +5,5 @@
   = form_tag locales_path do
     = render 'form', :locale_code => @locale_code, :locale_name => @locale_name
 
-    %p
+    %p.submit
       = submit_tag "Submit"

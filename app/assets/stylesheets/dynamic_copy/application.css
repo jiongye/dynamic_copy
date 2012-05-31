@@ -81,3 +81,21 @@ html, body, ul, li {
   background-color: #99FFFF;
   color: #000;
 }
+
+.dynamic_copy label {
+  display: block;
+  float: left;
+  text-align: right;
+  padding-right: 20px;
+  width: 150px;
+}
+
+.dynamic_copy .submit {
+  margin-left: 170px;
+}
+
+.dynamic_copy #available_locales span {
+  margin-left: 30px;
+  font-weight: bold;
+}
+

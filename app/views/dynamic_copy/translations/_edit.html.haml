@@ -1,5 +1,5 @@
 #translation
-  %h2
+  %p
     = "Edit Translation For Key: '#{@key}'"
 
   = form_tag translation_path(:id => @key), :method => :put do
@@ -8,7 +8,7 @@
     - @locales.each do |locale|
       %p
         = label_tag DynamicCopy.locale_names[locale]
-        = text_area_tag "locales[#{locale}][#{@key}]", DynamicCopy.locale_value(locale, @key)
+        = text_area_tag "locales[#{locale}][#{@key}]", DynamicCopy.locale_value(locale, @key), :cols => 40, :rows => 5
 
-    %p
+    %p.submit
       = submit_tag "Submit"
