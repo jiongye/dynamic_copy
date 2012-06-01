@@ -42,9 +42,13 @@ module DynamicCopy
 
     def destroy
       locale = params[:id]
-      DynamicCopy.delete_locale(locale)
-      DynamicCopy.database.save
-      redirect_to locales_path, :notice => "All translations for locale #{locale} has been deleted."
+
+      # should not allow to delete default locale
+      unless locale == I18n.default_locale.to_s
+        DynamicCopy.delete_locale(locale)
+        DynamicCopy.database.save
+        redirect_to locales_path, :notice => "All translations for locale #{locale} has been deleted."
+      end
     end
 
   end

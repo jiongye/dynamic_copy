@@ -18,7 +18,10 @@
         %td
           = DynamicCopy.locale_names[locale]
         %td
-          = link_to 'Delete', locale_path(:id => locale), :method => :delete, :confirm => "All translations for this locale will be deleted, Are you sure?"
+          - if locale != I18n.default_locale.to_s
+            = link_to 'Delete', locale_path(:id => locale), :method => :delete, :confirm => "All translations for this locale will be deleted, Are you sure?"
+          - else
+            default locale
 
   %p
     = link_to 'Create New Locale', new_locale_path
