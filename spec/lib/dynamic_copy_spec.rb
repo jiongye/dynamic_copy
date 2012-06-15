@@ -21,7 +21,7 @@ describe DynamicCopy do
       @keys = DynamicCopy.available_deepest_keys('en')
     end
 
-    it "should return the deepest 2 keys only" do
+    it "should return the deepest 1 keys only" do
       @keys.size.should == 1
     end
 

@@ -39,4 +39,25 @@ CONFIG
     end
   end
 
+  desc 'Export locale data to a yaml file'
+  task :export_to_yaml_file => :environment do
+    puts "Start exporting ..."
+    DynamicCopy.locales.each do |locale|
+      locale_hash = {}
+      DynamicCopy.available_deepest_keys(locale).each do |key|
+        translation = I18n.t(key, :locale => locale)
+        translation_hash = DynamicCopy.convert_to_hash(key, translation)
+        locale_hash.deep_merge!(translation_hash)
+      end
+      yaml_data = { locale => locale_hash }.to_yaml
+
+      filepath = Rails.root.join('config', 'locales', "dynamic_copy_#{locale}.yml")
+      file = File.new(filepath, "w")
+      file.puts yaml_data
+      file.close
+    end
+
+    puts "Finished exporting"
+  end
+
 end
